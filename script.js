@@ -53,7 +53,8 @@ function renderTasks() {
     )
     .map(function (item, index) {
       return `<div class="taskDiv${item.completed ? " completed" : ""}" data-index="${index}">
-        <input type="checkbox" class="taskCheckbox" ${item.completed ? "checked" : ""}/>
+        <input type="checkbox" id="checkbox${index}" class="taskCheckbox" ${item.completed ? "checked" : ""}/>
+        <label for="checkbox${index}" class="customTaskCheckbox"></label>
         <div class="taskContent">
           ${
             item.isEditing
