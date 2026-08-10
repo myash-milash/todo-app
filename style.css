@@ -82,16 +82,35 @@ body {
   border: 0;
 }
 .customTaskCheckbox {
-  min-width: 20px;
-  height: 20px;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  display: inline-block;
+  position: relative;
+  min-width: 22px;
+  height: 22px;
+  border: 2px solid #64444b;
+  border-radius: 6px;
+  background-color: #fff;
   transition: all 0.2s ease;
+  cursor: pointer;
 }
+
+.customTaskCheckbox::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform 0.2s ease;
+}
+
 .taskCheckbox:checked + .customTaskCheckbox {
   background-color: #c49292;
-  border-color: #64444b;
+}
+
+.taskCheckbox:checked + .customTaskCheckbox::after {
+  transform: rotate(45deg) scale(1);
 }
 
 .taskCheckbox:focus-visible + .customTaskCheckbox {
