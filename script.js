@@ -157,12 +157,23 @@ function setTheme(nameTheme) {
 }
 const darkThemeBtn = document.createElement("button");
 const classicThemeBtn = document.createElement("button");
+const whiteThemeBtn = document.createElement("button");
+const redThemeBtn = document.createElement("button");
 classicThemeBtn.classList.add("themeBtn");
 darkThemeBtn.classList.add("themeBtn");
+whiteThemeBtn.classList.add("themeBtn");
+redThemeBtn.classList.add("themeBtn");
 
 themes.appendChild(darkThemeBtn);
 themes.appendChild(classicThemeBtn);
+themes.appendChild(whiteThemeBtn);
+themes.appendChild(redThemeBtn);
 classicThemeBtn.setAttribute("data-theme-value", "classic");
 darkThemeBtn.setAttribute("data-theme-value", "dark");
+whiteThemeBtn.setAttribute("data-theme-value", "white");
+redThemeBtn.setAttribute("data-theme-value", "red");
+
 classicThemeBtn.addEventListener("click", () => setTheme("classic"));
 darkThemeBtn.addEventListener("click", () => setTheme("dark"));
+whiteThemeBtn.addEventListener("click", () => setTheme("white"));
+redThemeBtn.addEventListener("click", () => setTheme("red"));

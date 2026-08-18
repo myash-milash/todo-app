@@ -9,9 +9,43 @@
   --box-bg-color: white;
   --checked-box-color: #c49292;
   --border-box-color: #72333c;
+
+  --border-btn-color: black;
   --focus-outline-color: #72333c;
   --underline-input-color: #bda3a3;
   --input-bg-color: rgb(255, 248, 248);
+}
+body[data-theme="red"] {
+  --bg-color: #ffeed6;
+  --main-task-color: #ffffff;
+  --main-font-color: #090809;
+  --completed-task-color: #f2e3d5;
+  --add-btn-color: #f4796b;
+  --btn-font-color: #ffffff;
+  --h-color: #45491b;
+  --delete-btn-color: #8b2635;
+  --box-bg-color: #ffffff;
+  --checked-box-color: #4d5126;
+  --border-box-color: #4d5126;
+  --border-btn-color: transparent;
+  --focus-outline-color: #8b2635;
+  --underline-input-color: #f4796b;
+  --input-bg-color: #ffffff;
+}
+body[data-theme="white"] {
+  --bg-color: white;
+  --main-task-color: #f3f3f3;
+  --main-font-color: black;
+  --completed-task-color: #cfcfcf;
+  --add-btn-color: #c9c9c9;
+  --btn-font-color: #110c0c;
+  --delete-btn-color: #d1d1d1;
+  --box-bg-color: white;
+  --checked-box-color: #a1a1a1;
+  --border-box-color: #888888;
+  --focus-outline-color: #636363;
+  --underline-input-color: #8b8b8b;
+  --input-bg-color: white;
 }
 body[data-theme="dark"] {
   --bg-color: #251a1a;
@@ -39,6 +73,9 @@ body {
   background-color: var(--bg-color);
   font-size: 20px;
 }
+h1 {
+  color: var(--h-color);
+}
 button {
   color: var(--btn-font-color);
 }
@@ -47,7 +84,7 @@ button {
   width: 350px;
   border-radius: 15px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid var(--border-btn-color);
   font-size: 20px;
   background: var(--input-bg-color);
 }
@@ -88,7 +125,7 @@ button {
   width: 100%;
   min-height: 50px;
   border-radius: 15px;
-  border: 1px solid black;
+  border: 1px solid var(--border-btn-color);
   overflow-wrap: break-word;
 }
 
@@ -98,7 +135,7 @@ button {
   height: 40px;
   border-radius: 50%;
 
-  border: 1px solid black;
+  border: 1px solid var(--border-btn-color);
   background: var(--delete-btn-color);
 }
 #taskAddBtn {
@@ -157,7 +194,10 @@ button {
   position: fixed;
   top: 0;
   left: 0;
-  padding: 10px;
+  margin: 5px;
+  padding: 5px;
+  background: #91919131;
+  border-radius: 20px;
 }
 .themeBtn {
   border-radius: 50%;
@@ -170,4 +210,10 @@ button {
 }
 .themeBtn[data-theme-value="dark"] {
   background-color: #251a1a;
+}
+.themeBtn[data-theme-value="red"] {
+  background-color: #8b2635;
+}
+.themeBtn[data-theme-value="white"] {
+  background-color: white;
 }
