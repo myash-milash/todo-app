@@ -1,28 +1,62 @@
+:root {
+  --bg-color: #fff0f0;
+  --main-task-color: #f5d9d9;
+  --main-font-color: black;
+  --completed-task-color: #d3bdbda9;
+  --add-btn-color: #e7b9b9;
+  --btn-font-color: #110c0c;
+  --delete-btn-color: #bda3a3;
+  --box-bg-color: white;
+  --checked-box-color: #c49292;
+  --border-box-color: #72333c;
+  --focus-outline-color: #72333c;
+  --underline-input-color: #bda3a3;
+  --input-bg-color: rgb(255, 248, 248);
+}
+body[data-theme="dark"] {
+  --bg-color: #251a1a;
+  --main-task-color: #3b1f1f;
+  --main-font-color: rgb(214, 188, 188);
+  --completed-task-color: #3b1f1f70;
+  --add-btn-color: #977a7a;
+  --btn-font-color: #110c0c;
+  --delete-btn-color: #7c5b5b;
+  --box-bg-color: rgb(85, 64, 64);
+  --checked-box-color: #291919;
+  --border-box-color: #72333c;
+  --focus-outline-color: #72333c;
+  --underline-input-color: #bda3a3;
+  --input-bg-color: #3b1f1f;
+}
 * {
   padding: 0;
   margin: 0;
+  color: var(--main-font-color);
 }
 body {
   font-family: "Montserrat Alternates", sans-serif;
   padding: 50px;
-  background-color: #fff0f0;
+  background-color: var(--bg-color);
   font-size: 20px;
+}
+button {
+  color: var(--btn-font-color);
 }
 #taskInput {
   font-family: "Montserrat Alternates", sans-serif;
   width: 350px;
-  height: 15px;
   border-radius: 15px;
   padding: 10px;
   border: 1px solid black;
   font-size: 20px;
+  background: var(--input-bg-color);
 }
 .taskEditInput:focus {
   outline: none;
   border: none;
   font-family: "Montserrat Alternates", sans-serif;
-  border-bottom: 1px solid #bda3a3;
-  background-color: #bda3a300;
+  border-bottom: 1px solid var(--underline-input-color);
+  background-color: transparent;
   font-size: 20px;
   width: 80%;
 }
@@ -35,14 +69,14 @@ body {
 }
 .taskDiv {
   display: flex;
-  align-items: top;
+  align-items: flex-start;
   gap: 10px;
 }
 .completed .taskContent label {
   text-decoration: line-through;
 }
 .completed .taskContent {
-  background: #d3bdbda9;
+  background: var(--completed-task-color);
 }
 .taskContent {
   display: flex;
@@ -50,7 +84,7 @@ body {
   align-items: center;
   justify-content: space-between;
   padding: 0px 5px 0px 30px;
-  background: #f5d9d9;
+  background: var(--main-task-color);
   width: 100%;
   min-height: 50px;
   border-radius: 15px;
@@ -65,10 +99,10 @@ body {
   border-radius: 50%;
 
   border: 1px solid black;
-  background: #bda3a3;
+  background: var(--delete-btn-color);
 }
 #taskAddBtn {
-  background: #e7b9b9;
+  background: var(--add-btn-color);
 }
 .taskCheckbox {
   position: absolute;
@@ -85,9 +119,9 @@ body {
   position: relative;
   min-width: 22px;
   height: 22px;
-  border: 2px solid #64444b;
+  border: 2px solid var(--border-box-color);
   border-radius: 6px;
-  background-color: #fff;
+  background-color: var(--box-bg-color);
   transition: all 0.2s ease;
   cursor: pointer;
 }
@@ -106,7 +140,7 @@ body {
 }
 
 .taskCheckbox:checked + .customTaskCheckbox {
-  background-color: #c49292;
+  background-color: var(--checked-box-color);
 }
 
 .taskCheckbox:checked + .customTaskCheckbox::after {
@@ -114,6 +148,26 @@ body {
 }
 
 .taskCheckbox:focus-visible + .customTaskCheckbox {
-  outline: 2px solid #72333c;
+  outline: 2px solid var(--focus-outline-color);
   outline-offset: 2px;
+}
+#themes {
+  display: flex;
+  gap: 5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+}
+.themeBtn {
+  border-radius: 50%;
+  border: 1px;
+  width: 30px;
+  height: 30px;
+}
+.themeBtn[data-theme-value="classic"] {
+  background-color: #fff0f0;
+}
+.themeBtn[data-theme-value="dark"] {
+  background-color: #251a1a;
 }

@@ -2,6 +2,7 @@ const taskInput = document.getElementById(`taskInput`);
 const taskAddBtn = document.getElementById(`taskAddBtn`);
 const taskList = document.getElementById(`taskList`);
 const message = document.getElementById(`message`);
+const themes = document.getElementById("themes");
 let taskArr = uploadTasks();
 renderTasks();
 
@@ -150,3 +151,18 @@ taskInput.addEventListener(`keydown`, function (event) {
     addNewTask();
   }
 });
+
+function setTheme(nameTheme) {
+  document.body.setAttribute("data-theme", nameTheme);
+}
+const darkThemeBtn = document.createElement("button");
+const classicThemeBtn = document.createElement("button");
+classicThemeBtn.classList.add("themeBtn");
+darkThemeBtn.classList.add("themeBtn");
+
+themes.appendChild(darkThemeBtn);
+themes.appendChild(classicThemeBtn);
+classicThemeBtn.setAttribute("data-theme-value", "classic");
+darkThemeBtn.setAttribute("data-theme-value", "dark");
+classicThemeBtn.addEventListener("click", () => setTheme("classic"));
+darkThemeBtn.addEventListener("click", () => setTheme("dark"));
