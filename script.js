@@ -155,25 +155,17 @@ taskInput.addEventListener(`keydown`, function (event) {
 function setTheme(nameTheme) {
   document.body.setAttribute("data-theme", nameTheme);
 }
-const darkThemeBtn = document.createElement("button");
-const classicThemeBtn = document.createElement("button");
-const whiteThemeBtn = document.createElement("button");
-const redThemeBtn = document.createElement("button");
-classicThemeBtn.classList.add("themeBtn");
-darkThemeBtn.classList.add("themeBtn");
-whiteThemeBtn.classList.add("themeBtn");
-redThemeBtn.classList.add("themeBtn");
+themesArr = [
+  { name: "classic" },
+  { name: "dark" },
+  { name: "white" },
+  { name: "red" },
+];
 
-themes.appendChild(darkThemeBtn);
-themes.appendChild(classicThemeBtn);
-themes.appendChild(whiteThemeBtn);
-themes.appendChild(redThemeBtn);
-classicThemeBtn.setAttribute("data-theme-value", "classic");
-darkThemeBtn.setAttribute("data-theme-value", "dark");
-whiteThemeBtn.setAttribute("data-theme-value", "white");
-redThemeBtn.setAttribute("data-theme-value", "red");
-
-classicThemeBtn.addEventListener("click", () => setTheme("classic"));
-darkThemeBtn.addEventListener("click", () => setTheme("dark"));
-whiteThemeBtn.addEventListener("click", () => setTheme("white"));
-redThemeBtn.addEventListener("click", () => setTheme("red"));
+themesArr.forEach((element) => {
+  element.btn = document.createElement("button");
+  element.btn.classList.add("themeBtn");
+  themes.appendChild(element.btn);
+  element.btn.setAttribute("data-theme-value", element.name);
+  element.btn.addEventListener("click", () => setTheme(element.name));
+});
