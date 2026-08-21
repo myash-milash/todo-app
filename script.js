@@ -3,6 +3,7 @@ const taskAddBtn = document.getElementById(`taskAddBtn`);
 const taskList = document.getElementById(`taskList`);
 const message = document.getElementById(`message`);
 const themes = document.getElementById("themes");
+const themesToggleBtn = document.getElementById("themesToggle_btn");
 let taskArr = uploadTasks();
 renderTasks();
 
@@ -152,20 +153,39 @@ taskInput.addEventListener(`keydown`, function (event) {
   }
 });
 
-function setTheme(nameTheme) {
-  document.body.setAttribute("data-theme", nameTheme);
-}
-themesArr = [
+const themesArr = [
   { name: "classic" },
   { name: "dark" },
   { name: "white" },
   { name: "red" },
 ];
+const currentTheme = localStorage.getItem("theme") || "classic";
+setTheme(currentTheme);
+
+themesToggleBtn.addEventListener("click", () => {
+  themes.classList.toggle("is-open");
+});
+
+document.addEventListener("click", (event) => {
+  const isClickInside =
+    event.target.closest("#themes") ||
+    event.target.closest("#themesToggle_btn");
+  if (!isClickInside) {
+    themes.classList.remove("is-open");
+  }
+});
+function setTheme(nameTheme) {
+  document.body.setAttribute("data-theme", nameTheme);
+  themesToggleBtn.setAttribute("data-theme", nameTheme);
+  localStorage.setItem("theme", nameTheme);
+}
 
 themesArr.forEach((element) => {
   element.btn = document.createElement("button");
   element.btn.classList.add("themeBtn");
   themes.appendChild(element.btn);
   element.btn.setAttribute("data-theme-value", element.name);
-  element.btn.addEventListener("click", () => setTheme(element.name));
+  element.btn.addEventListener("click", () => {
+    setTheme(element.name);
+  });
 });
